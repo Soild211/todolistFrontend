@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import {  toast } from "react-toastify";
 
 import { Button } from "./ui/button";
 const AddForm = () => {
+  const url = process.env.NEXT_PUBLIC_URL_DEV
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [data, setData] = useState({
@@ -13,7 +14,7 @@ const AddForm = () => {
   });
   const handleSubmit = async () => {
     setIsSubmitting(true);
-    const status = await fetch("http://localhost:8080/api/addItem", {
+    const status = await fetch(`${url}/api/addItem`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(data),
