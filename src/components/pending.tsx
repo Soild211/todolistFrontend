@@ -1,15 +1,10 @@
 "use client";
-import {
-  Card,
-  CardHeader,
-  CardTitle,
-  CardDescription,
-  CardAction,
-  CardContent,
-  CardFooter,
-} from "./ui/card";
+import ToDoItem from "./ui/card";
 import { item } from "@/types/item";
+import { Dialog, DialogTrigger } from "@radix-ui/react-dialog";
 import { useQuery } from "@tanstack/react-query";
+import { Suspense } from "react";
+import EditItem from "./editItem";
 interface Props {
   className?: string;
 }
@@ -34,39 +29,26 @@ const Pending: React.FC<Props> = ({ className }) => {
   });
   return (
     <>
-      {isPending ? (
-        // <div className="flex items-center justify-center h-screen">
-        <p className="text-gray-500">Loading...</p>
-      ) : (
-        // </div>
-        <div className={className}>
+     <div className={className}>
           <div className="h-dvh border-2 border-blue-500 scrollbar overflow-y-auto p-4">
             <h1 className="text-center text-2xl font-bold">Pending</h1>
             <p className="text-center text-gray-600">Tasks that are pending</p>
+      {isPending ? (
+        // <div className="flex items-center justify-center h-screen">
+        <Suspense fallback={<p className="text-gray-500">Loading...</p>}>
+        </Suspense>
+      ) : (
+        // </div>
+        <div>
             {data?.map((item, id) => (
               <div key={id}>
-                <Card
-                  className="mt-4 scrollbar overflow-y-auto bg-red-400"
-                  key={id}
-                >
-                  <CardHeader>
-                    {/* Username */}
-                    <CardTitle>{item.username}</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    {/* Description */}
-                    <p>{item.content}</p>
-                  </CardContent>
-                  <CardFooter>
-                    {/* Date */}
-                    <p>{item.date.toString()}</p>
-                  </CardFooter>
-                </Card>
+                <EditItem item={item} status="PENDING"  />
               </div>
             ))}
-          </div>
         </div>
       )}
+        </div>
+        </div>
     </>
   );
 };
