@@ -5,6 +5,9 @@ interface Props {
 }
 
 export const Doing: React.FC<Props> = ({ className }) => {
+  // useEffect(()=>{
+
+  // },[data]);
   return <div className={className}>
       <div className="h-dvh border-2 border-blue-500">
       <h1 className="text-center text-2xl font-bold">Doing</h1>

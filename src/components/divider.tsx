@@ -29,6 +29,7 @@ const Divider = () => {
         <Draggable />
         <Droppable /> */}
       <QueryClientProvider client={queryClient}>
+        
         <Pending className="flex-1" />
         <Doing className="flex-1" />
         <Completed className="flex-1" />
