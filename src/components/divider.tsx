@@ -12,7 +12,7 @@ import {
   QueryClientProvider,
   useQuery,
 } from '@tanstack/react-query'
-
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 // Within your component that receives `transform` from `useDraggable`:
 // const style = {
 //   transform: CSS.Translate.toString(transform),
@@ -22,20 +22,18 @@ const Divider = () => {
   // const draggableMarkup = (
   //   <Draggable>Drag me</Draggable>
   // );
-  const queryClient = new QueryClient();
   return (
     <div className="flex flex-row w-full">
       {/* <DndContext>
         <Draggable />
         <Droppable /> */}
-      <QueryClientProvider client={queryClient}>
         
         <Pending className="flex-1" />
         <Doing className="flex-1" />
         <Completed className="flex-1" />
-      </QueryClientProvider>
       {/* </DndContext> */}
     </div>
+ 
   );
 };
 

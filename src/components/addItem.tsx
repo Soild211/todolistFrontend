@@ -12,7 +12,7 @@ const AddItem = () => {
   return (
     <div className="flex items-center justify-center bg-blue-700">
   <Dialog>
-  <DialogTrigger>Open</DialogTrigger>
+  <DialogTrigger>Add a new task</DialogTrigger>
   <DialogContent>
     <DialogHeader>
       <DialogTitle>Open a new task</DialogTitle>

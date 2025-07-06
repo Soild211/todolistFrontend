@@ -39,13 +39,15 @@ const Pending: React.FC<Props> = ({ className }) => {
         </Suspense>
       ) : (
         // </div>
-        <div>
-            {data?.map((item, id) => (
-              <div key={id}>
-                <EditItem item={item} status="PENDING"  />
-              </div>
-            ))}
-        </div>
+      
+  <div className="flex flex-col gap-4 w-full max-w-md">
+    {data?.map((item, id) => (
+      <div key={id} className="flex items-center justify-center">
+        <EditItem item={item} status="PENDING" />
+      </div>
+    ))}
+  </div>
+
       )}
         </div>
         </div>
